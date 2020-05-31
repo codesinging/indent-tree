@@ -1,0 +1,24 @@
+{
+    "name": "codesinging/indent-tree",
+    "description": "A package to convert list to a indent tree",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "codesinging",
+            "email": "codesinging@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeSinging\\IndentTree\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodeSinging\\IndentTree\\Tests\\": "tests"
+        }
+    }
+}
