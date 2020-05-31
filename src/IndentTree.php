@@ -89,14 +89,14 @@ class IndentTree
             $treeConfig[$this->config['tab']] = $path . $this->config['sign_5'] . ($isLast ? $this->config['sign_3'] : $this->config['sign_1']);
             $treeConfig[$this->config['tabName']] = $treeConfig[$this->config['tab']] . $this->config['sign_4'] . $item[$this->config['name']];
             $treeConfig[$this->config['depth']] = $depth + 1;
-            $treeConfig[$this->config['parentMap']] = array_merge($parentMap, [$item[$this->config['id']]]);
+            $treeConfig[$this->config['parentMap']] = $parentMap;
 
             $item[$this->config['key']] = $treeConfig;
             $list[] = $item;
 
             if (isset($row[$this->config['children']])) {
                 $childrenPath = $path . $this->config['sign_5'] . ($isLast ? $this->config['sign_0'] : $this->config['sign_2']);
-                $childrenList = $this->getIndent($row[$this->config['children']], $childrenPath, $item[$this->config['key']][$this->config['depth']], $item[$this->config['key']][$this->config['parentMap']]);
+                $childrenList = $this->getIndent($row[$this->config['children']], $childrenPath, $item[$this->config['key']][$this->config['depth']], array_merge($parentMap, [$item[$this->config['id']]]));
                 $list = array_merge($list, $childrenList);
             }
 
