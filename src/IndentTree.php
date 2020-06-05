@@ -29,7 +29,7 @@ class IndentTree
         'sign_2' => '│',
         'sign_3' => '└',
         'sign_4' => ' ',
-        'sign_5' => '',
+        'sign_5' => '　',
     ];
 
     /**
@@ -86,7 +86,7 @@ class IndentTree
             $isFirst = $index === 0;
 
             $treeConfig = [];
-            $treeConfig[$this->config['tab']] = $path . $this->config['sign_5'] . ($isLast ? $this->config['sign_3'] : $this->config['sign_1']);
+            $treeConfig[$this->config['tab']] = $path . ($path ? $this->config['sign_5'] : '') . ($isLast ? $this->config['sign_3'] : $this->config['sign_1']);
             $treeConfig[$this->config['tabName']] = $treeConfig[$this->config['tab']] . $this->config['sign_4'] . $item[$this->config['name']];
             $treeConfig[$this->config['depth']] = $depth + 1;
             $treeConfig[$this->config['parentMap']] = $parentMap;
@@ -95,7 +95,7 @@ class IndentTree
             $list[] = $item;
 
             if (isset($row[$this->config['children']])) {
-                $childrenPath = $path . $this->config['sign_5'] . ($isLast ? $this->config['sign_0'] : $this->config['sign_2']);
+                $childrenPath = $path . ($path ? $this->config['sign_5'] : '') . ($isLast ? $this->config['sign_0'] : $this->config['sign_2']);
                 $childrenList = $this->getIndent($row[$this->config['children']], $childrenPath, $item[$this->config['key']][$this->config['depth']], array_merge($parentMap, [$item[$this->config['id']]]));
                 $list = array_merge($list, $childrenList);
             }
